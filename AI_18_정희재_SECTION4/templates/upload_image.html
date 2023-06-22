@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Upload Image</title>
+<!-- Add Bootstrap CSS -->
+<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</head>
+<body style="background-image: url(https://i.ibb.co/jrg4htp/image.jpg); background-size: cover;">
+<h1 style="text-align: center; color: white; padding-top: 20px;">오늘 뭐 입지?</h1>
+<div class="container">
+<div class="row">
+<div class="col">
+<hr>
+<form action="/upload-image"method="POST"enctype="multipart/form-data">
+<div class="form-group">
+<div class="custom-file">
+<input type="file"class="custom-file-input"name="image"id="image"onchange="updateFileName(this.value)">
+<label class="custom-file-label"for="image"id="file-label">Choose file</label>
+</div>
+</div>
+<button type="submit"class="btn btn-primary" style="background-color: white; color: black;">UPLOAD</button>
+</form>
+<form action="/predict-image"method="POST"enctype="multipart/form-data">
+<button type="submit"class="btn btn-primary" style="background-color: white; color: black;">PREDICT</button>
+</form>
+</div>
+</div>
+</div>
+<img src="{{ url_for('send_uploaded_file', filename=uploaded_image) }}"/>
+<script>
+function updateFileName(value) {
+let fileName = value.split('\\').pop();
+$('#file-label').html(fileName);
+ }
+</script>
+</body>
+</html>

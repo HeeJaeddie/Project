@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Image Search Results</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5">이렇게 입어봐!</h1>
+      <div class="row mt-5">
+        {% for image in similar_images %}
+        <div class="col-4">
+          <img src="{{ url_for('send_uploaded_file', filename=image) }}" class="img-thumbnail">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
+
+
